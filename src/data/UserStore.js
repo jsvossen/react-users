@@ -1,7 +1,9 @@
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
+import UserActionTypes from './UserActionTypes';
 import UserDispatcher from './UserDispatcher';
 
+import Counter from './Counter';
 import User from './User';
 
 class UserStore extends ReduceStore {
@@ -14,10 +16,25 @@ class UserStore extends ReduceStore {
   }
 
   reduce(state, action) {
-    switch (action.type) {
-      default:
-        return state;
+    const actions = {
+      [UserActionTypes.ADDED_USER]: this.addUser,
+      // [UserActionTypes.DELETED_USER]: () = {},
+      // [UserActionTypes.UPDATED_USER]: () = {}
     }
+    return actions[action.type] ? actions[action.type](state, action) : state;
+  }
+
+  addUser(state, action) {
+    if (!action.firstName && !action.lastName && !action.address) {
+      return state;
+    }
+    const id = Counter.increment();
+    return state.set(id, new User({
+      id,
+      firstName: action.firstName,
+      lastName: action.lastName,
+      address: action.address
+    }));
   }
 }
 

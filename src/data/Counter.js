@@ -1,4 +1,5 @@
-/**
+
+/*
  * Copyright (c) 2014-present, Facebook, Inc.
  * All rights reserved.
  *
@@ -9,12 +10,15 @@
 
 'use strict';
 
-import AppContainer from './containers/AppContainer';
-import React from 'react';
-import ReactDOM from 'react-dom';
+let _counter = 1;
 
-ReactDOM.render(<AppContainer />, document.getElementById('root'));
+/**
+ * This is a simple counter for providing unique ids.
+ */
+const Counter = {
+  increment() {
+    return 'id-' + String(_counter++);
+  },
+};
 
-import UserActions from './data/UserActions';
-
-UserActions.addUser('Jane', 'Smith', '123 Main St. Anytown USA');
+export default Counter;
