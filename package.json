@@ -1,9 +1,9 @@
 {
-  "name": "flux-shell",
+  "name": "gci-user-list",
   "version": "1.0.0",
-  "description": "Basic shell application for the Flux architecture",
-  "repository": "https://github.com/facebook/flux",
-  "author": "Kyle Davis",
+  "description": "React/Flux user list demo",
+  "repository": "https://github.com/jsvossen/react-users",
+  "author": "Jennifer Vossen",
   "license": "BSD-3-Clause",
   "main": "bundle.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
-    "flux": "../../.",
+    "flux": "^3.1.3",
     "immutable": "^3.8.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.1"
