@@ -1,0 +1,56 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#main {
+  max-width: 400px;
+  margin: auto;
+}
+
+h1 {
+  background: #414b92;
+  color: #fff;
+  padding: 15px;
+
+}
+
+#user-list { margin: 0; padding: 0; }
+#user-list > li {
+  list-style: none;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 15px 0;
+}
+#user-list > li:hover > .btns {
+  display: block;
+}
+
+.btns {
+  float: right;
+  display: none;
+}
+.btns button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 5px;
+  font-size: 12px;
+  font-style: italic;
+  color: #999;
+}
+.btns button:hover {
+  text-decoration: underline;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.addr {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 16px;
+}
