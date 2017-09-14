@@ -18,7 +18,7 @@ const Actions = {
     });
   },
 
-  updateDraft(firstName, lastName, address) {
+  updateUser(firstName, lastName, address) {
   	UserDispatcher.dispatch({
   		type: UserActionTypes.UPDATED_USER,
       firstName,

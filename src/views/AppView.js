@@ -23,7 +23,7 @@ function Main(props) {
           <li id={'user-'+user.id} key={user.id}>
             <div className='btns'>
               <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => props.onDeleteUser(user.id)}>Delete</button>
             </div>
             <div className='name'>{user.firstName} {user.lastName}</div>
             <div className='addr'>{user.address}</div>
