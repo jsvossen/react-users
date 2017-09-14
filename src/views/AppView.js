@@ -2,7 +2,12 @@ import React from 'react';
 
 function AppView(props) {
   return (
-  	<Main {...props} />
+    <div id='app'>
+      <h1>All Users <span className='count'>({props.users.size})</span></h1>
+    	<Main {...props} />
+      <hr />
+      <AddUser {...props} />
+    </div>
   );
 }
 
@@ -13,7 +18,6 @@ function Main(props) {
 
   return (
     <section id="main">
-      <h1>All Users</h1>
       <ul id="user-list">
         {[...props.users.values()].map(user => (
           <li id={'user-'+user.id} key={user.id}>
@@ -27,6 +31,18 @@ function Main(props) {
         ))}
       </ul>
     </section>
+  );
+}
+
+function AddUser(props) {
+  return (
+    <div id='add-user'>
+      <h2>Add User</h2>
+      <input type='text' className='half' placeholder='First Name'/>
+      <input type='text' className='half' placeholder='Last Name'/>
+      <input type='text' placeholder='Address'/>
+      <button>Save</button>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#main {
+#app {
   max-width: 400px;
   margin: auto;
 }
@@ -11,11 +11,17 @@ h1 {
   background: #414b92;
   color: #fff;
   padding: 15px;
+  font-size: 28px;
+}
+h1 > .count { float: right; }
 
+h2 {
+  margin: 0;
+  font-size: 20px;
 }
 
 #user-list { margin: 0; padding: 0; }
-#user-list > li {
+#user-list > li, #add-user {
   list-style: none;
   padding: 15px;
   border-radius: 10px;
@@ -53,4 +59,23 @@ h1 {
   font-weight: 300;
   font-style: italic;
   font-size: 16px;
+}
+
+#add-user input[type=text] {
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 14px;
+  margin: 5px 0;
+  width: 100%;
+}
+#add-user input.half {
+  width: 50%;
+}
+#add-user button {
+  font-size: 14px;
+  cursor: pointer;
+  background: #90dca4;
+  border-radius: 5px;
+  border: 0;
+  padding: 5px 10px;
 }
