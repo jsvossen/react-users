@@ -25,6 +25,9 @@ class UserStore extends ReduceStore {
   }
 
   addUser(state, action) {
+    action.firstName = action.firstName.trim();
+    action.lastName = action.lastName.trim();
+    action.address = action.address.trim();
     if (!action.firstName && !action.lastName && !action.address) {
       return state;
     }

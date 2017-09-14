@@ -34,16 +34,45 @@ function Main(props) {
   );
 }
 
-function AddUser(props) {
-  return (
-    <div id='add-user'>
-      <h2>Add User</h2>
-      <input type='text' className='half' placeholder='First Name'/>
-      <input type='text' className='half' placeholder='Last Name'/>
-      <input type='text' placeholder='Address'/>
-      <button>Save</button>
-    </div>
-  );
+class AddUser extends React.Component {
+  constructor(props) {
+    super(props);
+    this.clearState();
+  }
+  clearState() {
+    this.state = {
+      firstName: '',
+      lastName: '',
+      address: ''
+    };
+  }
+  render() {
+    const onClick = (event) => {
+      this.props.onAddUser(this.state.firstName, this.state.lastName, this.state.address);
+      this.clearState();
+      event.preventDefault();
+    };
+    const onChange = (event) => {
+      let value = event.target.value;
+      let field = event.target.name;
+      this.setState({ [field]: value } );
+    };
+    return (
+      <form id='add-user'>
+        <h2>Add User</h2>
+        <input type='text' name='firstName' className='half' placeholder='First Name'
+          value={this.state.firstName}
+          onChange={onChange}/>
+        <input type='text' name='lastName' className='half' placeholder='Last Name'
+          value={this.state.lastName}
+          onChange={onChange}/>
+        <input type='text' name='address' placeholder='Address'
+          value={this.state.address}
+          onChange={onChange}/>
+        <button type='submit' onClick={onClick}>Save</button>
+      </form>
+    );
+  }
 }
 
 export default AppView;
