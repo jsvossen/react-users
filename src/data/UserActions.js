@@ -18,6 +18,20 @@ const Actions = {
     });
   },
 
+  startEditingUser(id) {
+    UserDispatcher.dispatch({
+      type: UserActionTypes.STARTED_USER_EDIT,
+      id,
+    });
+  },
+
+  stopEditingUser(id) {
+    UserDispatcher.dispatch({
+      type: UserActionTypes.STOPPED_USER_EDIT,
+      id,
+    });
+  },
+
   updateUser(firstName, lastName, address) {
   	UserDispatcher.dispatch({
   		type: UserActionTypes.UPDATED_USER,

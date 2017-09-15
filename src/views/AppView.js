@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 function AppView(props) {
   return (
@@ -11,27 +12,70 @@ function AppView(props) {
   );
 }
 
-function Main(props) {
-  if (props.users.size === 0) {
-    return null;
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editing: null
+    }
   }
 
-  return (
-    <section id="main">
-      <ul id="user-list">
-        {[...props.users.values()].map(user => (
-          <li id={'user-'+user.id} key={user.id}>
-            <div className='btns'>
-              <button>Edit</button>
-              <button onClick={() => props.onDeleteUser(user.id)}>Delete</button>
-            </div>
-            <div className='name'>{user.firstName} {user.lastName}</div>
-            <div className='addr'>{user.address}</div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
+  render() {
+    const props = this.props;
+    if (props.users.size === 0) {
+      return null;
+    }
+    return (
+      <section id="main">
+        <ul id="user-list">
+          {[...props.users.values()].map(user => (
+            <li id={'user-'+user.id} key={user.id}>
+              <UserItem user={user} {...props}/>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
+}
+
+class UserItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.resetState();
+  }
+  resetState() {
+    this.state = {
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      address: this.props.user.address
+    }
+  }
+
+  render() {
+    let isEditing = this.props.editing === this.props.user.id;
+    let userView = (
+      <div>
+        <div className='name'>{this.props.user.firstName} {this.props.user.lastName}</div>
+        <div className='addr'>{this.props.user.address}</div>
+      </div>
+    );
+    if (isEditing) userView = <p>Editing!</p>;
+
+    return(
+      <div className={classnames({
+        'user-item': 'user-item',
+        editing: isEditing,
+      })}>
+        <div className='btns'>
+          <button onClick={() => this.props.onStartEdit(this.props.user.id) }>Edit</button>
+          <button onClick={() => this.props.onStopEdit(this.props.user.id)}>Cancel</button>
+          <button onClick={() => this.props.onDeleteUser(this.props.user.id)}>Delete</button>
+        </div>
+        {userView}
+      </div>
+    );
+  }
 }
 
 class AddUser extends React.Component {
