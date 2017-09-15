@@ -19,7 +19,7 @@ class UserStore extends ReduceStore {
     const actions = {
       [UserActionTypes.ADDED_USER]: this.addUser,
       [UserActionTypes.DELETED_USER]: this.deleteUser,
-      // [UserActionTypes.UPDATED_USER]: () = {}
+      [UserActionTypes.UPDATED_USER]: this.updateUser
     }
     return actions[action.type] ? actions[action.type](state, action) : state;
   }
@@ -42,6 +42,15 @@ class UserStore extends ReduceStore {
 
   deleteUser(state, action) {
     return state.delete(action.id);
+  }
+
+  updateUser(state, action) {
+    return state.set(action.id, new User({
+      id: action.id,
+      firstName: action.firstName,
+      lastName: action.lastName,
+      address: action.address
+    }));
   }
 }
 

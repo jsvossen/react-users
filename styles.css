@@ -60,21 +60,36 @@ h2 {
   font-size: 16px;
 }
 
-#add-user input[type=text] {
+.user-form input[type=text] {
   box-sizing: border-box;
   padding: 5px;
   font-size: 14px;
   margin: 5px 0;
   width: 100%;
 }
-#add-user input.half {
+.user-form input.half {
   width: 50%;
 }
-#add-user button {
+.user-form button.submit {
   font-size: 14px;
   cursor: pointer;
-  background: #90dca4;
   border-radius: 5px;
+  background: #90dca4;
   border: 0;
   padding: 5px 10px;
+}
+.user-form button.cancel {
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 5px 10px;
+  font-style: italic;
+  color: #888;
+}
+.user-form button.cancel:hover {
+  text-decoration: underline;
+}
+#add-user button.cancel {
+    display: none;
 }

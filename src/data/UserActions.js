@@ -32,9 +32,10 @@ const Actions = {
     });
   },
 
-  updateUser(firstName, lastName, address) {
+  updateUser(id, firstName, lastName, address) {
   	UserDispatcher.dispatch({
   		type: UserActionTypes.UPDATED_USER,
+      id,
       firstName,
       lastName,
       address
