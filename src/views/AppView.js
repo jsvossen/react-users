@@ -11,6 +11,15 @@ function AppView(props) {
   );
 }
 
+function AddUser(props) {
+  return (
+    <div id='add-user'>
+      <h2>Add User</h2>
+      <UserForm {...props} />
+    </div>
+  );
+}
+
 function Main(props) {
   if (props.users.size === 0) {
     return null;
@@ -25,46 +34,6 @@ function Main(props) {
         ))}
       </ul>
     </section>
-  );
-}
-
-function UserItem(props) {
-    let isEditing = props.editing === props.user.id;
-    let userView = (
-      <div>
-        <div className='name'>{props.user.firstName} {props.user.lastName}</div>
-        <div className='addr'>{props.user.address}</div>
-      </div>
-    );
-    let buttons = (
-      <div className='btns'>
-        <button onClick={() => props.onStartEdit(props.user.id) }>Edit</button>
-        <button onClick={() => props.onDeleteUser(props.user.id)}>Delete</button>
-      </div>
-    );
-    if (isEditing) {
-      userView = (
-        <div className='edit-user'>
-          <UserForm {...props} />
-        </div>
-      );
-      buttons = null;
-    }
-
-    return(
-      <div className='user-item'>
-        {buttons}
-        {userView}
-      </div>
-    );
-}
-
-function AddUser(props) {
-  return (
-    <div id='add-user'>
-      <h2>Add User</h2>
-      <UserForm {...props} />
-    </div>
   );
 }
 
@@ -121,6 +90,37 @@ class UserForm extends React.Component {
       </form>
     );
   }
+}
+
+function UserItem(props) {
+    let isEditing = props.editing === props.user.id;
+    let userView = (
+      <div>
+        <div className='name'>{props.user.firstName} {props.user.lastName}</div>
+        <div className='addr'>{props.user.address}</div>
+      </div>
+    );
+    let buttons = (
+      <div className='btns'>
+        <button onClick={() => props.onStartEdit(props.user.id) }>Edit</button>
+        <button onClick={() => props.onDeleteUser(props.user.id)}>Delete</button>
+      </div>
+    );
+    if (isEditing) {
+      userView = (
+        <div className='edit-user'>
+          <UserForm {...props} />
+        </div>
+      );
+      buttons = null;
+    }
+
+    return(
+      <div className='user-item'>
+        {buttons}
+        {userView}
+      </div>
+    );
 }
 
 export default AppView;
