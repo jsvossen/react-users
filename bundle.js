@@ -193,7 +193,17 @@
 	    ),
 	    _react2.default.createElement(Main, props),
 	    _react2.default.createElement('hr', null),
-	    _react2.default.createElement(AddUser, props)
+	    _react2.default.createElement(AddUser, props),
+	    _react2.default.createElement(
+	      'p',
+	      { id: 'footer' },
+	      'View the code on ',
+	      _react2.default.createElement(
+	        'a',
+	        { href: 'https://github.com/jsvossen/react-users', target: '_blank' },
+	        'GitHub'
+	      )
+	    )
 	  );
 	}
 

@@ -7,6 +7,7 @@ function AppView(props) {
     	<Main {...props} />
       <hr />
       <AddUser {...props} />
+      <p id='footer'>View the code on <a href='https://github.com/jsvossen/react-users' target='_blank'>GitHub</a></p>
     </div>
   );
 }
