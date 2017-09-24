@@ -1,4 +1,5 @@
 import React from 'react';
+import UserService from '../data/UserService'
 
 function AppView(props) {
   return (
@@ -21,21 +22,29 @@ function AddUser(props) {
   );
 }
 
-function Main(props) {
-  if (props.users.size === 0) {
-    return null;
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
   }
-  return (
-    <section id="main">
-      <ul id="user-list">
-        {[...props.users.values()].map(user => (
-          <li id={'user-'+user.id} key={user.id}>
-            <UserItem user={user} {...props}/>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
+  componentDidMount() {
+    UserService.loadUsers();
+  }
+  render() {
+    if (this.props.users.size === 0) {
+      return null;
+    }
+    return (
+      <section id="main">
+        <ul id="user-list">
+          {[...this.props.users.values()].map(user => (
+            <li id={'user-'+user.id} key={user.id}>
+              <UserItem user={user} {...this.props}/>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
 }
 
 class UserForm extends React.Component {

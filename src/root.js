@@ -14,9 +14,3 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(<AppContainer />, document.getElementById('root'));
-
-import UserActions from './data/UserActions';
-
-UserActions.addUser('Jane', 'Smith', '123 Main St., Anytown USA');
-UserActions.addUser('Bill', 'Denbrough', '76 Witcham St., Derry, ME');
-UserActions.addUser('Arya', 'Stark', 'Winterfell, Westros');
